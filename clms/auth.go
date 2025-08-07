@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt"
-	"quantify.earth/reclaimer/internal/utils"
+	"github.com/quantifyearth/reclaimer/internal/utils"
 )
 
 // This is the structure you download from the CLMS website

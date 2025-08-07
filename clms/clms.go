@@ -6,7 +6,7 @@ import (
 	"io"
 	"net/http"
 
-	"quantify.earth/reclaimer/internal/utils"
+	"github.com/quantifyearth/reclaimer/internal/utils"
 )
 
 type CLMSSearchBatch struct {

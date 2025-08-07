@@ -6,8 +6,8 @@ import (
 	"os"
 	"path"
 
-	"quantify.earth/reclaimer/clms"
-	"quantify.earth/reclaimer/zenodo"
+	"github.com/quantifyearth/reclaimer/clms"
+	"github.com/quantifyearth/reclaimer/zenodo"
 )
 
 type subcommand func([]string)

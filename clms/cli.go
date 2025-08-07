@@ -11,7 +11,7 @@ import (
 
 	"github.com/cheynewallace/tabby"
 
-	"quantify.earth/reclaimer/internal/utils"
+	"github.com/quantifyearth/reclaimer/internal/utils"
 )
 
 func inspectAllGeneratedData() error {

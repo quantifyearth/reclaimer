@@ -10,7 +10,7 @@ import (
 	"path"
 	"time"
 
-	"quantify.earth/reclaimer/internal/utils"
+	"github.com/quantifyearth/reclaimer/internal/utils"
 )
 
 type ZenodoCreator struct {

@@ -1,4 +1,4 @@
-module quantify.earth/reclaimer
+module github.com/quantifyearth/reclaimer
 
 go 1.22.2
 

@@ -12,6 +12,8 @@ import (
 	"strings"
 	"syscall"
 	"time"
+
+	"github.com/schollz/progressbar/v3"
 )
 
 func HTTPGet(url string, headers map[string]string) (*http.Response, error) {
@@ -161,7 +163,11 @@ func DownloadFile(downloadURL string, targetFilename string, extract bool, desti
 		return fmt.Errorf("unexpected HTTP status %d: %s", resp.StatusCode, resp.Status)
 	}
 
-	_, err = io.Copy(out, resp.Body)
+	bar := progressbar.DefaultBytes(
+		resp.ContentLength,
+		"downloading",
+	)
+	_, err = io.Copy(io.MultiWriter(out, bar), resp.Body)
 	out.Close()
 	if nil != err {
 		return fmt.Errorf("failed to download file: %w", err)

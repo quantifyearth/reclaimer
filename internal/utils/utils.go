@@ -5,15 +5,33 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"net"
 	"net/http"
 	"os"
 	"path"
 	"strings"
 	"syscall"
+	"time"
 )
 
 func HTTPGet(url string, headers map[string]string) (*http.Response, error) {
-	client := &http.Client{}
+	transport := &http.Transport{
+		Dial: (&net.Dialer{
+			Timeout:   30 * time.Second,
+			KeepAlive: 30 * time.Second,
+		}).Dial,
+		TLSHandshakeTimeout:   10 * time.Second,
+		ResponseHeaderTimeout: 10 * time.Second,
+		ExpectContinueTimeout: 1 * time.Second,
+		MaxIdleConns:          100,
+		MaxIdleConnsPerHost:   10,
+		DisableCompression:    true,
+	}
+
+	client := &http.Client{
+		Transport: transport,
+		Timeout:   0,
+	}
 
 	req, err := http.NewRequest("GET", url, nil)
 	if nil != err {
